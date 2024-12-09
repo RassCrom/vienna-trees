@@ -9,7 +9,7 @@ function App() {
   const mapRef = useRef();
   const [clickedTree, setClickedTree] = useState([]);
   const [treeTypeList, setTreeTypeList] = useState([]);
-  const [selectedTree, setSelectedTree] = useState('');
+  const [selectedTree, setSelectedTree] = useState('all');
   const [plantingYearsList, setPlantingYearsList] = useState([]);
 
   const handleZoomIn = () => {
@@ -51,7 +51,8 @@ function App() {
   }
 
   const handlePlantingYearList = (years) => {
-    setPlantingYearsList([...years])
+    const validYears = years.filter(year => typeof year === 'number');
+    setPlantingYearsList(validYears);
   }
 
   return (

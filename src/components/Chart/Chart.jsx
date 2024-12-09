@@ -13,7 +13,7 @@ function Chart({ selectedTree, plantingYearsList }) {
         .thresholds(15); // Set the number of bins
 
     const bins = binGenerator(plantingYearsList);
-
+    
     // Convert bins into chart-friendly format
     const binData = bins.map(bin => ({
         range: `${bin.x0}-${bin.x1}`, // Bin range
@@ -22,7 +22,7 @@ function Chart({ selectedTree, plantingYearsList }) {
 
     return (
         <div className={`absolute bottom-5 right-5 flex flex-col h-40 w-8/12 ${styles.chart_container}`}>
-            {/* <h2 className='p-2.5'>It is {!selectedTree ? 'All' : selectedTree}</h2> */}
+            <h2 className='p-2.5'>It is {!selectedTree ? 'All' : selectedTree}</h2>
             <ChartGraph binData={binData} />
         </div>
     );

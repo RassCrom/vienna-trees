@@ -67,7 +67,7 @@ const Map = forwardRef((props, ref) => {
       .then((trees) => {
         circlesRef.current = g.selectAll('circle')
           .data(
-            (!props.selectedTree || props.selectedTree === 'All') 
+            (!props.selectedTree || props.selectedTree === 'all') 
               ? trees.features 
               : trees.features.filter(d => d.properties.TreeType.split(' ')[0] === props.selectedTree)
           )
@@ -139,7 +139,11 @@ const Map = forwardRef((props, ref) => {
         const uniqueTreeTypeList = new Set(treeTypeList);
         props.handleTreeTypeList(uniqueTreeTypeList);
 
-        const treeYearsList = trees.features.map(el => parseInt(el.properties.PlantingYear));
+        const treeYearsList = trees
+          .features
+          .map(el => (el.properties.TreeType.split(' ')[0] === props.selectedTree 
+            || props.selectedTree === 'all') 
+            && parseInt(el.properties.PlantingYear));
         props.handlePlantingYearList(treeYearsList)
           
       })
