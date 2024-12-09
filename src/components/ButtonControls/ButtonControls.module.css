@@ -18,3 +18,36 @@
 .btn:active {
     transform: scale(1); /* Reset scale when clicked */
 }
+
+.info_box {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+
+    z-index: 101;
+
+    background-color: rgba(36, 36, 36, 0.95);
+}
+
+.info_text {
+    background-color: black;
+    padding: 5rem;
+
+    position: relative;
+
+    width: 50%;
+}
+
+.info_close {
+    position: absolute;
+    top: 4rem;
+    right: 4rem;
+    opacity: .7;
+
+    cursor: pointer;
+}

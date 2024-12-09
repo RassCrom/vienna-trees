@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import { useRef } from 'react';
 
-function ChartGraph({ yearCounts }) {
+function ChartGraph({ binData }) {
     const chartRef = useRef();
 
     const margin = { top: 20, right: 30, bottom: 40, left: 40 };
@@ -20,12 +20,12 @@ function ChartGraph({ yearCounts }) {
 
     // Create scales
     const x = d3.scaleBand()
-    .domain(yearCounts.map(d => d.year))
+    .domain(binData.map(d => d.range))
     .range([0, width])
     .padding(0.1);
 
     const y = d3.scaleLinear()
-    .domain([0, d3.max(yearCounts, d => d.count)])
+    .domain([0, d3.max(binData, d => d.count)])
     .nice()
     .range([height, 0]);
 
@@ -42,25 +42,39 @@ function ChartGraph({ yearCounts }) {
 
     // Draw bars
     svg.selectAll('.bar')
-    .data(yearCounts)
+    .data(binData)
     .enter()
     .append('rect')
     .attr('class', 'bar')
-    .attr('x', d => x(d.year))
+    .attr('x', d => x(d.range))
     .attr('y', d => y(d.count))
     .attr('width', x.bandwidth())
     .attr('height', d => height - y(d.count))
-    .attr('fill', '#69b3a2');
+    .attr('fill', '#69b3a2')
+    .on('mouseover', function(event, d) {
+        d3.select(this).style("cursor", "pointer")
+            .attr('stroke', 'white')
+            .attr('fill', '#92c8bb')
+    })
+    .on('mouseout', function(event, d) {
+      d3.select(this).style("cursor", "default")
+      .attr("stroke", 'none')
+      .attr('fill', '#69b3a2');
+    });
 
-    // Add labels if needed
+    // Labels
     svg.selectAll('.label')
-    .data(yearCounts)
+    .data(binData)
     .enter()
     .append('text')
-    .attr('x', d => x(d.year) + x.bandwidth() / 2)
+    .attr('x', d => x(d.range) + x.bandwidth() / 2)
     .attr('y', d => y(d.count) - 5)
     .attr('text-anchor', 'middle')
-    .text(d => d.count);
+    .attr('fill', 'white')
+    .text(d => d.count)
+    .on('mouseover', function(event, d) { // Use 'mouseover'
+        d3.select(this).style("cursor", "pointer")
+    });
 
     return (
         <div ref={chartRef} className={`w-full h-full`}>
