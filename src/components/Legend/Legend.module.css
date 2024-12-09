@@ -1,0 +1,152 @@
+.legend {
+    position: fixed;
+    top: 1.25rem;
+    left: 1.25rem;
+    bottom: 1.25rem;
+    width: 25rem;
+    /* height: 50; */
+    z-index: 100;
+    background-color: rgba(36, 36, 36, 0.8);
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 1.25rem;
+    padding: 1rem;
+    align-items: flex-start;
+    
+    /* max-height: calc(100vh - 2.5rem); */
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+@media only screen and (max-width: 800px) {
+    .legend {
+        bottom: auto;
+    }
+    .legend_content {
+        display: none;
+    }
+
+
+}
+
+.legend_heading {
+    background: linear-gradient(90deg, #830404, #10b401);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* LEGENDYEAR  */
+
+.legend_year {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.year_items {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.item {
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+}
+
+.item_color {
+    width: 1rem;
+    height: 1rem;
+    background-color: #A10000;
+    border-radius: 50%;
+}
+
+.year_items .item:nth-child(2) .item_color {
+    background-color: #A14E00;
+}
+.year_items .item:nth-child(3) .item_color {
+    background-color: #C7AD02;
+}
+.year_items .item:nth-child(4) .item_color {
+    background-color: #00A159;
+}
+.year_items .item:nth-child(5) .item_color {
+    background-color: #01BF0B;
+}
+
+.item_height {
+    flex-direction: column;
+}
+
+.height_items {
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 0.6rem;
+}
+
+.item_stroke {
+    background-color: transparent;
+    border: 2px solid #2600FF;
+}
+
+.year_items .item:nth-child(2) .item_stroke {
+    background-color: transparent;
+    border: 2px solid #00E5FF;
+}
+
+.year_items .item:nth-child(3) .item_stroke {
+    background-color: transparent;
+    border: 2px solid #FF00E5;
+}
+
+.daim_items {
+    align-items: flex-end;
+}
+
+.item_diam {
+    border: 1px solid white;
+    width: 6px;
+    height: 6px;
+}
+
+.year_items .item:nth-child(2) .item_diam {
+    border: 1px solid white;
+    width: 12px;
+    height: 12px;
+}
+
+.year_items .item:nth-child(3) .item_diam {
+    border: 1px solid white;
+    width: 18px;
+    height: 18px;
+}
+
+.year_items .item:nth-child(4) .item_diam {
+    background-color: transparent;
+    width: 24px;
+    height: 24px;
+}
+
+
+
+/* Style the scrollbar for Webkit browsers */
+.legend::-webkit-scrollbar {
+    width: 6px; /* Thin scrollbar */
+}
+
+.legend::-webkit-scrollbar-track {
+    background: rgba(36, 36, 36, 0.8); /* Darker background for the track */
+    border-radius: 3px;
+}
+
+.legend::-webkit-scrollbar-thumb {
+    background: rgba(100, 100, 100, 0.9); /* Dark thumb */
+    border-radius: 3px;
+}
+
+.legend::-webkit-scrollbar-thumb:hover {
+    background: rgba(150, 150, 150, 0.9); /* Lighter on hover */
+}

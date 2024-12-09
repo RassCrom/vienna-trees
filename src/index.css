@@ -1,0 +1,75 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+*,
+*::after,
+*::before {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    transition: all ease .4ms;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+ul,
+ol,
+li {
+    list-style: none;
+}
+img {
+    vertical-align: top;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+html, body {
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    height: 100%;
+    overflow: hidden;
+    scroll-behavior: smooth;
+}
+
+#root {
+    height: 100%;
+}
+
+h1 {
+    font: italic bold 2.2rem "Merriweather";
+    color: white;
+}
+
+h2 {
+    font: italic normal 1.2rem "Merriweather";
+    color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    
+    html, body {
+        background-color: black;
+        color: white;
+        font-size: 10px;
+        height: 100%;
+        overflow: hidden;
+        scroll-behavior: smooth;
+    }
+
+}
