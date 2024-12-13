@@ -1,4 +1,5 @@
 import * as d3 from 'd3';
+import PropTypes from 'prop-types';
 import { useEffect, useRef } from 'react';
 
 function ChartGraph({ binData }) {
@@ -55,12 +56,12 @@ function ChartGraph({ binData }) {
                 .attr('width', x.bandwidth())
                 .attr('height', d => height - y(d.count))
                 .attr('fill', '#69b3a2')
-                .on('mouseover', function(event, d) {
+                .on('mouseover', function() {
                     d3.select(this).style("cursor", "pointer")
                         .attr('stroke', 'white')
                         .attr('fill', '#92c8bb')
                 })
-                .on('mouseout', function(event, d) {
+                .on('mouseout', function() {
                   d3.select(this).style("cursor", "default")
                   .attr("stroke", 'none')
                   .attr('fill', '#69b3a2');
@@ -91,5 +92,11 @@ function ChartGraph({ binData }) {
 
     return <div ref={chartRef} className="w-full h-full" />;
 }
+
+// PropTypes validation
+ChartGraph.propTypes = {
+    binData: PropTypes.array,
+};
+
 
 export default ChartGraph;

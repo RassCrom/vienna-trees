@@ -42,7 +42,7 @@ const Map = forwardRef((props, ref) => {
     const path = d3.geoPath().projection(projection);
 
     d3.json(
-      'https://corsproxy.io/?https://raw.githubusercontent.com/AndreasDiv/D3js-Files/main/streets-oldtown.geojson'
+      'https://raw.githubusercontent.com/RassCrom/geovisual_vienna_trees/refs/heads/main/streets-oldtown.geojson.geojson'
     )
       .then((streets) => {
         projection.fitSize([width, height], streets);
@@ -202,6 +202,7 @@ Map.propTypes = {
   setClickedTree: PropTypes.func, // Required function
   handleTreeTypeList: PropTypes.func, // Required function
   selectedTree: PropTypes.string, // Required function
+  handlePlantingYearList: PropTypes.array
 };
 
 
